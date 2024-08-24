@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@use "sass:map";
 
 @mixin material-theme() {
 
@@ -27,4 +28,15 @@
     // emit any typography styles.
     @include mat.button-theme($app-theme);
     @include mat.toolbar-theme($app-primary);
+
+    @include declare-variables($app-theme);
+}
+
+@mixin  declare-variables($app-theme) {
+
+
+    :root {
+
+        --app-light-primary-border-color: map.get(map.get($app-theme, color), primary);
+    }
 }

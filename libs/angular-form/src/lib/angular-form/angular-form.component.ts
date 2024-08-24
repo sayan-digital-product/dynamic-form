@@ -7,6 +7,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { DynamicEventService } from '../services/dynamic-event.service';
+import { EventHandlerModel } from '../models/event.model';
+import { FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -29,8 +32,14 @@ export class AngularFormComponent implements OnInit{
 
   constructor(
     private formSrv: FormDataService,
-    private cdref: ChangeDetectorRef
-  ){}
+    private cdref: ChangeDetectorRef,
+    private eventSrv: DynamicEventService
+  ){
+
+    this.eventSrv.eventname$.subscribe((event: EventHandlerModel) => {
+      this.handleFormEvents(event);
+    })
+  }
 
 
   ngOnInit(){
@@ -39,6 +48,27 @@ export class AngularFormComponent implements OnInit{
 
   }
 
+  handleFormEvents(data: EventHandlerModel){
+    switch(data.event){
+      case 'toggleDatePicker': this.toggleDatePicker(data.form, data.key, data.value);
+            break;
+      default: this.eventError();
+                break;
+    }
+  }
+
+  toggleDatePicker(form: FormGroup, key: string, value: string): void {
+    const datePickerControl = form.get('dateOfBirth');
+    if (value === 'yes') {
+        datePickerControl?.enable();
+    } else {
+        datePickerControl?.disable();
+    }
+  }
+
+  eventError() {
+    console.log("Event is not registered");
+  }
 
   fetchFormData(fileName: string){
 
