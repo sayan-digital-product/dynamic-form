@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'grid-layout' as grid;
+@use 'app/theme/app-theme' as app-theme;
+@use 'app/styles/app-styles' as styles;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@include grid.grid-layout();
+@include app-theme.material-theme();
+@include styles.app-styles();
+

@@ -1,0 +1,30 @@
+@use '@angular/material' as mat;
+
+@mixin material-theme() {
+
+    @include mat.core();
+
+    $app-primary: mat.m2-define-palette(mat.$m2-green-palette, 500);
+    $app-accent: mat.m2-define-palette(mat.$m2-teal-palette, 900, 600, 700);
+
+    $app-theme: mat.m2-define-light-theme((
+    color: (
+    primary: $app-primary,
+    accent: $app-accent,
+    ),
+    typography: mat.m2-define-typography-config(),
+    density: -2,
+    ));
+
+    // Emit theme-dependent styles for common features used across multiple components.
+    @include mat.core-theme($app-theme);
+
+    @include mat.all-component-themes($app-theme);
+    @include mat.strong-focus-indicators-theme(purple);
+
+    // Emit styles for MatButton based on `$app-theme`. Because the configuration
+    // passed to `m2-define-light-theme` omits typography, `button-theme` will not
+    // emit any typography styles.
+    @include mat.button-theme($app-theme);
+    @include mat.toolbar-theme($app-primary);
+}

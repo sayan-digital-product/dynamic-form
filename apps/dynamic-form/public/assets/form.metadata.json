@@ -1,0 +1,112 @@
+{
+    "formName": "BankAccountCreation",
+    "layout": "3",
+    "fields": [
+      {
+        "key": "firstName",
+        "label": "First Name",
+        "type": "text",
+        "required": true,
+        "validators": ["required", "minLength:2"]
+      },
+      {
+        "key": "lastName",
+        "label": "Last Name",
+        "type": "text",
+        "required": true,
+        "validators": ["required", "minLength:2"]
+      },
+      {
+        "key": "email",
+        "label": "Email",
+        "type": "email",
+        "required": true,
+        "validators": ["required", "email"]
+      },
+      {
+        "key": "phoneNumber",
+        "label": "Phone Number",
+        "type": "text",
+        "required": true,
+        "validators": ["required", "pattern:^\\+?[1-9]\\d{1,14}$"]
+      },
+      {
+        "key": "enableDate",
+        "label": "Enable Date of Birth",
+        "type": "radio",
+        "options": [
+          {"key": "yes", "label": "Yes"},
+          {"key": "no", "label": "No"}
+        ],
+        "required": true,
+        "validators": ["required"],
+        "events": ["toggleDatePicker"],
+        "className": "vertical-radio-group"
+      },
+      {
+        "key": "dateOfBirth",
+        "label": "Date of Birth",
+        "type": "date",
+        "required": true,
+        "validators": ["required"],
+        "disabled": true
+      },
+      {
+        "key": "accountType",
+        "label": "Account Type",
+        "type": "dropdown",
+        "options": [],
+        "required": true,
+        "validators": ["required"],
+        "source": "api"
+      },
+      {
+        "key": "gender",
+        "label": "Gender",
+        "type": "radio",
+        "options": [
+          {"key": "male", "label": "Male"},
+          {"key": "female", "label": "Female"},
+          {"key": "other", "label": "Other"}
+        ],
+        "required": true,
+        "validators": ["required"]
+      },
+      {
+        "key": "address",
+        "label": "Address",
+        "type": "text",
+        "required": true,
+        "validators": ["required"]
+      },
+      {
+        "key": "city",
+        "label": "City",
+        "type": "text",
+        "required": true,
+        "validators": ["required"]
+      },
+      {
+        "key": "state",
+        "label": "State",
+        "type": "text",
+        "required": true,
+        "validators": ["required"]
+      },
+      {
+        "key": "zipcode",
+        "label": "Zip Code",
+        "type": "text",
+        "required": true,
+        "validators": ["required", "pattern:^\\d{5}$"]
+      },
+      {
+        "key": "termsAndConditions",
+        "label": "Accept Terms and Conditions",
+        "type": "checkbox",
+        "required": true,
+        "validators": ["requiredTrue"]
+      }
+    ]
+  }
+  

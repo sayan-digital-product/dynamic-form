@@ -1,0 +1,23 @@
+<section class="toggle-forms margin-2fr">
+  <button mat-raised-button color="primary" (click)="fetchFormData('form')">Banking</button>
+  <button mat-raised-button color="primary" class="margin-left-1r" (click)="fetchFormData('patient-record')">Hospital</button>
+</section>
+<mat-card class="example-card mat-elevation-z4">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Bank Details</mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <section>
+        @if(formData && formData.fields && formData.fields.length) {
+            <sb-dynamic-form [metaData]="formData"></sb-dynamic-form>
+        }
+    </section>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-actions align="end">
+        <button mat-stroked-button color="primary">Reset</button>
+        <button mat-raised-button type="submit" color="primary" class="margin-left-1r">Submit</button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,28 @@
+/* Grid for the entire form */
+@use "sass:map";
+
+@mixin grid-layout() {
+
+    .dynamic-form {
+        display: grid;
+        gap: 16px;
+    }
+      
+    /* Define grid layouts for 1, 2, 3, or 4 columns */
+    .col-1 {
+    grid-template-columns: 1fr;
+    }
+    
+    .col-2 {
+    grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .col-3 {
+    grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .col-4 {
+    grid-template-columns: repeat(4, 1fr);
+    }
+      
+}

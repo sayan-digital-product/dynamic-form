@@ -1,0 +1,55 @@
+
+<section class="padding-2r">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" [ngClass]="'dynamic-form ' + columnClass">
+    <div *ngFor="let field of _metaData.fields">
+      <ng-container [ngSwitch]="field.type">
+        <mat-form-field *ngSwitchCase="'text'" appearance="outline">
+          <mat-label>{{ field.label }}</mat-label>
+          <input matInput [formControlName]="field.key" />
+          @if (form.get(field.key) && form.get(field.key)?.value) {
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="form.get(field.key)?.setValue('')">
+              <mat-icon>close</mat-icon>
+            </button>
+          }
+          <mat-error *ngIf="form.get(field.key)?.invalid">{{ field.label }} is required</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field *ngSwitchCase="'email'" appearance="outline">
+          <mat-label>{{ field.label }}</mat-label>
+          <input matInput type="email" [formControlName]="field.key" />
+          <mat-error *ngIf="form.get(field.key)?.invalid">{{ field.label }} is required</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field *ngSwitchCase="'date'" appearance="outline">
+          <mat-label>{{ field.label }}</mat-label>
+          <input matInput [matDatepicker]="picker" [formControlName]="field.key" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="form.get(field.key)?.invalid">{{ field.label }} is required</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field *ngSwitchCase="'dropdown'" appearance="outline">
+          <mat-label>{{ field.label }}</mat-label>
+          <mat-select [formControlName]="field.key">
+            <mat-option *ngFor="let option of field.options" [value]="option.key">
+              {{ option.label }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get(field.key)?.invalid">{{ field.label }} is required</mat-error>
+        </mat-form-field>
+  
+        <mat-radio-group *ngSwitchCase="'radio'" [formControlName]="field.key" [ngClass]="field.className">
+          <mat-label>{{ field.label }}</mat-label>
+          <mat-radio-button *ngFor="let option of field.options" [value]="option.key">
+            {{ option.label }}
+          </mat-radio-button>
+        </mat-radio-group>
+  
+        <mat-checkbox *ngSwitchCase="'checkbox'" [formControlName]="field.key">
+          {{ field.label }}
+        </mat-checkbox>
+      </ng-container>
+    </div>
+  </form>
+  
+</section>

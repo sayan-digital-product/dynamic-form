@@ -1,0 +1,14 @@
+[
+    {
+        "key": "savings",
+        "label": "Savings"
+    },
+    {
+        "key": "loan",
+        "label": "Loan"
+    },
+    {
+        "key": "investment",
+        "label": "Investment"
+    }
+]

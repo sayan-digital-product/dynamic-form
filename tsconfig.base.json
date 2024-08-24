@@ -14,7 +14,13 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@dynamic-form/angular-form": ["libs/angular-form/src/index.ts"],
+      "@dynamic-form/core": ["libs/core/src/index.ts"],
+      "@dynamic-form/formly": ["libs/formly/src/index.ts"],
+      "@dynamic-form/shared": ["libs/shared/src/index.ts"],
+      "@dynamic-form/tanstack": ["libs/tanstack/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
