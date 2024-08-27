@@ -5,3 +5,9 @@
 .margin-2fr {
     margin: 2rem;
 }
+
+mat-card {
+    border-color: var(--app-light-primary-border-color);
+    border-width: 2px;
+    border-style: solid;
+}

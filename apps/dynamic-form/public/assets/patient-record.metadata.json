@@ -1,5 +1,6 @@
 {
   "formName": "PatientRecord",
+  "title": "Patient Record Creation",
   "layout": "3",
   "fields": [
     {

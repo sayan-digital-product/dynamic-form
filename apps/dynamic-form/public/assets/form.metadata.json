@@ -1,5 +1,6 @@
 {
     "formName": "BankAccountCreation",
+    "title": "Account Creation",
     "layout": "3",
     "fields": [
       {

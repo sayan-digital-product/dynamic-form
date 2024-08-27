@@ -17,6 +17,7 @@ export interface FormFieldOptions {
   export interface FormMetadata {
     formName: string;
     layout?: string;
+    title: string;
     fields: FormField[];
   }
   
